@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Energia</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="container">
+    <form action="/submit" method="post">
+      <label for="projeto">Projeto</label>
+      <select id="projeto" name="projeto">
+        <option value="residencial">Residencial</option>
+        <option value="comercial">Comercial</option>
+        <option value="industrial">Industrial</option>
+      </select>
+
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado" onchange="selecionarEstado(this.value)">
+        <option value="">Selecione um estado</option>
+      </select>
+
+      <label for="cidade">Cidade</label>
+      <select id="cidade" name="cidade"></select>
+
+      <label for="custoEnergia">Custo de Energia Mensal</label>
+      <input type="number" id="custoEnergia" name="custoEnergia" placeholder="Insira o custo de energia">
+
+      <button type="submit" onclick="enviarFormulario()">Enviar</button>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
