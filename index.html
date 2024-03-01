@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Energia</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Payback</title>
+    <style>
+        #resultado {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div id="container">
-    <form action="/submit" method="post">
-      <label for="projeto">Projeto</label>
-      <select id="projeto" name="projeto">
-        <option value="residencial">Residencial</option>
-        <option value="comercial">Comercial</option>
-        <option value="industrial">Industrial</option>
-      </select>
+    <h1>Calculadora de Payback</h1>
+    <label for="investimentoInicial">Investimento Inicial (R$):</label>
+    <input type="number" id="investimentoInicial" min="0"><br><br>
+    
+    <label for="economiaMensal">Economia Mensal (R$):</label>
+    <input type="number" id="economiaMensal" min="0"><br><br>
+    
+    <button onclick="calcularPayback()">Calcular</button><br><br>
+    
+    <div id="resultado"></div>
 
-      <label for="estado">Estado</label>
-      <select id="estado" name="estado" onchange="selecionarEstado(this.value)">
-        <option value="">Selecione um estado</option>
-      </select>
-
-      <label for="cidade">Cidade</label>
-      <select id="cidade" name="cidade"></select>
-
-      <label for="custoEnergia">Custo de Energia Mensal</label>
-      <input type="number" id="custoEnergia" name="custoEnergia" placeholder="Insira o custo de energia">
-
-      <button type="submit" onclick="enviarFormulario()">Enviar</button>
-    </form>
-  </div>
-
-  <script src="js/script.js"></script>
+    <script>
+        function calcularPayback() {
+            // Obter valores dos campos
+            const investimentoInicial = parseFloat(document.getElementById('investimentoInicial').value);
+            const economiaMensal = parseFloat(document.getElementById('economiaMensal').value);
+            
+            // Calcular o payback em anos
+            const paybackAnos = investimentoInicial / (economiaMensal * 12);
+            
+            // Exibir o resultado
+            const resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerHTML = `O payback do sistema de energia fotovoltaica é de aproximadamente ${paybackAnos.toFixed(2)} anos.`;
+        }
+    </script>
 </body>
 </html>
